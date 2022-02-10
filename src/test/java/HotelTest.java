@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import rooms.Bedroom;
 import rooms.ConferenceRoom;
+import rooms.DiningRoom;
 import rooms.RoomType;
 
 import static org.junit.Assert.*;
@@ -13,14 +14,14 @@ public class HotelTest {
     Bedroom singleBedroom;
     Bedroom tripleBedroom;
     ConferenceRoom conferenceRoom;
-//    ConferenceRoom conf2;
+    DiningRoom diningRoom;
     Hotel hotel;
     Guest guest;
 
     @Before
     public void before() {
-        singleBedroom = new Bedroom(RoomType.SINGLE, 1);
-        tripleBedroom = new Bedroom(RoomType.TRIPLE, 3);
+        singleBedroom = new Bedroom(RoomType.SINGLE, 1, 10.0);
+        tripleBedroom = new Bedroom(RoomType.TRIPLE, 3, 30.0);
         conferenceRoom = new ConferenceRoom(RoomType.CONF1, "CONF 1");
         hotel = new Hotel("Fawlty Towers");
         hotel.addBedroom(singleBedroom);
@@ -36,7 +37,7 @@ public class HotelTest {
 
     @Test
     public void canAddBedroom() {
-        Bedroom doubleBedroom = new Bedroom(RoomType.DOUBLE, 2);
+        Bedroom doubleBedroom = new Bedroom(RoomType.DOUBLE, 2, 20.0);
         hotel.addBedroom(doubleBedroom);
         assertTrue(hotel.getBedrooms().contains(doubleBedroom));
     }
@@ -60,5 +61,12 @@ public class HotelTest {
         assertTrue(tripleBedroom.getGuests().contains(guest));
         hotel.checkOutGuest(guest, tripleBedroom);
         assertFalse(tripleBedroom.getGuests().contains(guest));
+    }
+
+    @Test
+    public void canAddDiningRoom() {
+        diningRoom = new DiningRoom(RoomType.DININGROOM, "Comedor");
+        hotel.addDiningRoom(diningRoom);
+        assertTrue(hotel.getDiningRooms().containsKey("Comedor"));
     }
 }

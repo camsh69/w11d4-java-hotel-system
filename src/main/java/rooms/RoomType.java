@@ -6,7 +6,8 @@ public enum RoomType {
     TRIPLE(3),
     FAMILY(4),
     CONF1(20),
-    CONF2(30);
+    CONF2(30),
+    DININGROOM(30);
 
     private final int value;
 

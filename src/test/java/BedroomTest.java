@@ -11,7 +11,7 @@ public class BedroomTest {
 
     @Before
     public void before() {
-        singleBedroom = new Bedroom(RoomType.SINGLE, 1);
+        singleBedroom = new Bedroom(RoomType.SINGLE, 1, 10.0);
     }
 
     @Test
@@ -32,5 +32,10 @@ public class BedroomTest {
     @Test
     public void guestsStartsEmpty() {
         assertTrue(singleBedroom.getGuests().isEmpty());
+    }
+
+    @Test
+    public void canGetRate() {
+        assertEquals(10.0, singleBedroom.getRate(), 0.0);
     }
 }
