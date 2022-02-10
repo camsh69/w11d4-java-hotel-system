@@ -28,4 +28,12 @@ public abstract class Room {
         return this.guests;
     }
 
+    public void addGuest(Guest guest) {
+        this.guests.add(guest);
+    }
+
+
+    public void removeGuest(Guest guest) {
+        this.guests.remove(guest);
+    }
 }
