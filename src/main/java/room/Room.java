@@ -1,15 +1,18 @@
 package room;
 
 import guest.Guest;
+import rooms.RoomType;
 
 import java.util.ArrayList;
 
 public abstract class Room {
     private int capacity;
     private ArrayList<Guest> guests;
+    private RoomType roomType;
 
-    public Room(int capacity) {
-        this.capacity = capacity;
+    public Room(RoomType roomType) {
+        this.capacity = roomType.getValue();
+        this.roomType = roomType;
         this.guests = new ArrayList<>();
     }
 
@@ -17,15 +20,12 @@ public abstract class Room {
         return this.capacity;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public RoomType getRoomType() {
+        return this.roomType;
     }
 
     public ArrayList<Guest> getGuests() {
         return this.guests;
     }
 
-    public void setGuests(ArrayList<Guest> guests) {
-        this.guests = guests;
-    }
 }
